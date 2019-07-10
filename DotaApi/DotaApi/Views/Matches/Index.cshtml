@@ -1,0 +1,42 @@
+﻿@model IEnumerable<Match>
+@{
+    ViewData["Recent Matches"] = "Recent Matches";
+}
+
+<!-- using HTML to refresh the page in seconds -->
+<meta http-equiv="refresh" content="60">
+
+<table class="table table-bordered table-hover">
+    <thead class="thead-dark">
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Game Mode</th>
+            <th scope="col">Winner</th>
+            <th scope="col">Duration</th>
+            <th scope="col">Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var match in Model)
+        {
+            <tr>
+                <th scope="row">@match.Id</th>
+                <td>@match.GameMode</td>
+
+                @if (match.Result)
+                {
+                    <td>Team Radiant</td>
+                }
+                else
+                {
+                    <td>Team Dire</td>
+                }
+                <td>@match.DurationInMinutes</td>
+                <td class="text-center">
+                    <a class="btn btn-primary btn-sm align" asp-controller="Matches" asp-action="Details" asp-route-id="@match.Id">See Match</a>
+                </td>
+            </tr>
+        }
+
+    </tbody>
+</table>

@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29020.237
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DotaApi", "DotaApi\DotaApi.csproj", "{9F8D07B3-85DF-40A2-90A9-C775AA2B0745}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotaApi.Services", "DotaApi.Services\DotaApi.Services.csproj", "{986E618D-A336-4171-9BAF-875513750DD8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotaApi.Data", "DotaApi.Data\DotaApi.Data.csproj", "{8AA27DB0-409B-429F-B352-7ECF89D77AED}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9F8D07B3-85DF-40A2-90A9-C775AA2B0745}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F8D07B3-85DF-40A2-90A9-C775AA2B0745}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F8D07B3-85DF-40A2-90A9-C775AA2B0745}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F8D07B3-85DF-40A2-90A9-C775AA2B0745}.Release|Any CPU.Build.0 = Release|Any CPU
+		{986E618D-A336-4171-9BAF-875513750DD8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{986E618D-A336-4171-9BAF-875513750DD8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{986E618D-A336-4171-9BAF-875513750DD8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{986E618D-A336-4171-9BAF-875513750DD8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8AA27DB0-409B-429F-B352-7ECF89D77AED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8AA27DB0-409B-429F-B352-7ECF89D77AED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8AA27DB0-409B-429F-B352-7ECF89D77AED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8AA27DB0-409B-429F-B352-7ECF89D77AED}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0CAF3BC0-55F2-48CF-AEC7-0FAD6AFD270C}
+	EndGlobalSection
+EndGlobal

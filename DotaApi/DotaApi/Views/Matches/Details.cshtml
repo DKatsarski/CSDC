@@ -1,0 +1,287 @@
+﻿@model MatchDetails
+@{
+    ViewData["Recent Matches"] = "Recent Matches";
+}
+
+@{
+    var teamRadiant = Model.Players.Where(x => x.IsRadiant == true);
+    var teamDire = Model.Players.Where(x => x.IsRadiant == false);
+}
+
+<div class="container bg-light">
+    <div class="row">
+        <div class="col-2">
+            <label>Match ID:</label>
+            <h2>@Model.Id</h2>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-6 text-center">
+            @if (Model.Winner == true)
+            {
+                <h1>Radiant Victory</h1>
+            }
+            else
+            {
+                <h1>Dire Victory</h1>
+            }
+        </div>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-1 text-center p-0">
+            <p>R: @Model.RadiantScore</p>
+        </div>
+        <div class="col-1 text-center p-0">
+            <p>@Model.DurationInMinutes</p>
+        </div>
+        <div class="col-1 text-center p-0">
+            <p>D: @Model.DireScore</p>
+        </div>
+    </div>
+</div>
+
+<div class="containter">
+    <section class="row">
+        <div class="col">
+            <header class="font-weight-bold">The Radient</header>
+            <article>
+                <table class="table table-hover table-dark">
+                    <thead>
+                        <tr>
+                            <th scope="col">Hero</th>
+                            <th scope="col">Player</th>
+                            <th scope="col">K</th>
+                            <th scope="col">D</th>
+                            <th scope="col">A</th>
+                            <th scope="col">LH</th>
+                            <th scope="col">DN</th>
+                            <th scope="col">GPM</th>
+                            <th scope="col">XPM</th>
+                            <th scope="col">DMG</th>
+                            <th scope="col">HEAL</th>
+                            <th scope="col">BLD</th>
+                            <th scope="col">Items</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var player in teamRadiant)
+                        {
+                            <tr>
+                                <td>@player.Hero</td>
+                                <td>
+                                    @if (player.PlayerName == "Anonymous")
+                                    {
+
+                                        @(player.PlayerName)
+                                    }
+                                    else
+                                    {
+                                        <a class="text-warning" asp-controller="Players" asp-action="Index" asp-route-id="@player.PlayerId">@player.PlayerName</a>
+                                    }
+                                </td>
+                                @if (player.Kills != 0)
+                                {
+                                    <td>@player.Kills</td> }
+                                else
+                                {
+                                    <td>-</td>}
+                                @if (player.Deaths != 0)
+                                {
+                                    <td>@player.Deaths</td> }
+                                else
+                                {
+                                    <td>-</td>}
+                                @if (player.Assists != 0)
+                                {
+                                    <td>@player.Assists</td> }
+                                else
+                                {
+                                    <td>-</td>}
+                                @if (player.LastHits != 0)
+                                {
+                                    <td>@player.LastHits</td> }
+                                else
+                                {
+                                    <td>-</td>}
+                                @if (player.Denies != 0)
+                                {
+                                    <td>@player.Denies</td> }
+                                else
+                                {
+                                    <td>-</td>}
+                                @if (player.GoldPerMin != 0)
+                                {
+                                    <td>@player.GoldPerMin</td> }
+                                else
+                                {
+                                    <td>-</td>}
+                                @if (player.ExperiencePerMin != 0)
+                                {
+                                    <td>@player.ExperiencePerMin</td> }
+                                else
+                                {
+                                    <td>-</td>}
+                                @if (player.HeroDamage != 0)
+                                {
+                                    <td>@player.HeroDamage</td> }
+                                else
+                                {
+                                    <td>-</td>}
+                                @if (player.Healing != 0)
+                                {
+                                    <td>@player.Healing</td> }
+                                else
+                                {
+                                    <td>-</td>}
+                                @if (player.BuildingDamage != 0)
+                                {
+                                    <td>@player.BuildingDamage</td> }
+                                else
+                                {
+                                    <td>-</td>}
+                                <td>@(string.Join(", ", player.Items.Where(item => item != 0)))</td>
+                            </tr>
+                        }
+                        <tr>
+                            <td colspan="2"></td>
+                            <td>@teamRadiant.Sum(t => t.Kills)</td>
+                            <td>@teamRadiant.Sum(t => t.Deaths)</td>
+                            <td>@teamRadiant.Sum(t => t.Assists)</td>
+                            <td>@teamRadiant.Sum(t => t.LastHits)</td>
+                            <td>@teamRadiant.Sum(t => t.Denies)</td>
+                            <td>@teamRadiant.Sum(t => t.GoldPerMin)</td>
+                            <td>@teamRadiant.Sum(t => t.ExperiencePerMin)</td>
+                            <td>@teamRadiant.Sum(t => t.HeroDamage)</td>
+                            <td>@teamRadiant.Sum(t => t.Healing)</td>
+                            <td>@teamRadiant.Sum(t => t.BuildingDamage)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </article>
+        </div>
+    </section>
+    <section class="row">
+        <div class="col">
+            <header class="font-weight-bold">The Dire</header>
+            <article>
+                <table class="table table-hover table-dark">
+                    <thead>
+                        <tr>
+                            <th scope="col">Hero</th>
+                            <th scope="col">Player</th>
+                            <th scope="col">K</th>
+                            <th scope="col">D</th>
+                            <th scope="col">A</th>
+                            <th scope="col">LH</th>
+                            <th scope="col">DN</th>
+                            <th scope="col">GPM</th>
+                            <th scope="col">XPM</th>
+                            <th scope="col">DMG</th>
+                            <th scope="col">HEAL</th>
+                            <th scope="col">BLD</th>
+                            <th scope="col">Items</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var player in teamDire)
+                        {
+                            <tr>
+                                <td>@player.Hero</td>
+                                <td>
+                                    @if (player.PlayerName == "Anonymous")
+                                    {
+
+                                        @(player.PlayerName)
+                                    }
+                                    else
+                                    {
+                                        <a class="text-warning" asp-controller="Players" asp-action="Index" asp-route-id="@player.PlayerId">@player.PlayerName</a>
+                                    }
+                                </td>
+                                @if (player.Kills != 0)
+                                {
+                                    <td>@player.Kills</td> }
+                                else
+                                {
+                                    <td>-</td>}
+                                @if (player.Deaths != 0)
+                                {
+                                    <td>@player.Deaths</td> }
+                                else
+                                {
+                                    <td>-</td>}
+                                @if (player.Assists != 0)
+                                {
+                                    <td>@player.Assists</td> }
+                                else
+                                {
+                                    <td>-</td>}
+                                @if (player.LastHits != 0)
+                                {
+                                    <td>@player.LastHits</td> }
+                                else
+                                {
+                                    <td>-</td>}
+                                @if (player.Denies != 0)
+                                {
+                                    <td>@player.Denies</td> }
+                                else
+                                {
+                                    <td>-</td>}
+                                @if (player.GoldPerMin != 0)
+                                {
+                                    <td>@player.GoldPerMin</td> }
+                                else
+                                {
+                                    <td>-</td>}
+                                @if (player.ExperiencePerMin != 0)
+                                {
+                                    <td>@player.ExperiencePerMin</td> }
+                                else
+                                {
+                                    <td>-</td>}
+                                @if (player.HeroDamage != 0)
+                                {
+                                    <td>@player.HeroDamage</td> }
+                                else
+                                {
+                                    <td>-</td>}
+                                @if (player.Healing != 0)
+                                {
+                                    <td>@player.Healing</td> }
+                                else
+                                {
+                                    <td>-</td>}
+                                @if (player.BuildingDamage != 0)
+                                {
+                                    <td>@player.BuildingDamage</td> }
+                                else
+                                {
+                                    <td>-</td>}
+                                <td>@(string.Join(", ", player.Items.Where(item => item != 0)))</td>
+                            </tr>
+                        }
+                        <tr>
+                            <td colspan="2"></td>
+                            <td>@teamDire.Sum(t => t.Kills)</td>
+                            <td>@teamDire.Sum(t => t.Deaths)</td>
+                            <td>@teamDire.Sum(t => t.Assists)</td>
+                            <td>@teamDire.Sum(t => t.LastHits)</td>
+                            <td>@teamDire.Sum(t => t.Denies)</td>
+                            <td>@teamDire.Sum(t => t.GoldPerMin)</td>
+                            <td>@teamDire.Sum(t => t.ExperiencePerMin)</td>
+                            <td>@teamDire.Sum(t => t.HeroDamage)</td>
+                            <td>@teamDire.Sum(t => t.Healing)</td>
+                            <td>@teamDire.Sum(t => t.BuildingDamage)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </article>
+
+        </div>
+    </section>
+</div>

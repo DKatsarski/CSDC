@@ -1,0 +1,22 @@
+﻿@model Player
+@{
+    ViewData["Player Details"] = "Player Details";
+}
+
+<h1>    @Model.Profile.Name</h1>
+
+<li>
+    @Model.Profile.Id
+</li>
+
+<img src="@Model.Profile.Avatar" alt="Smiley face">
+
+<ul>
+    @foreach (var hero in Model.Heroes)
+    {
+        <li>ID @hero.Id</li>
+        <li> (@hero.Games) Games Played with hero (@hero.Id)</li>
+   
+    }
+</ul>
+<li>@Model.Profile.Id</li>
