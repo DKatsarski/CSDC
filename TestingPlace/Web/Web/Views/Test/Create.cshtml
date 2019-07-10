@@ -1,0 +1,21 @@
+﻿@model Web.Models.Test.TestModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<form asp-controller="Test" asp-action="Create" method="post">
+    <input asp-for="Model" class="form-control" placeholder="Enter Model" />
+    <input asp-for="Owner" placeholder="Enter Owner" />
+    <input asp-for="ThisOne.ALotOfMoney" placeholder="Give Me MONEEEYY" />
+    <input asp-for="ThisOne.ManyNumbers" placeholder="Give Me number" />
+
+
+
+    <input type="submit" />
+    <li>
+    </li>
+</form>
+
