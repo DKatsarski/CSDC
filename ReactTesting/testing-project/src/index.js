@@ -3,10 +3,29 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import lowerCaseAndSort from './utilities/string-utils';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+const data = ['Germany', 'Albania', 'United States'];
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
+lowerCaseAndSort(data);
+
+function Header() {
+    return (
+        <header>
+            <nav>
+                <ul>
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+    );
+}
+
+ReactDOM.render(
+    <div></div>,
+    document.getElementById('root')
+)
+
 serviceWorker.unregister();
