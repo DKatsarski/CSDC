@@ -19,8 +19,9 @@ function Header(props) {
 }
 
 function Nav(props) {
+    const {className} = props;
     return (
-        <nav>
+        <nav className={className}>
             <ul>
                 <li>
                     <a href="/">Home</a>
@@ -44,7 +45,7 @@ function Footer(props) {
 
 
 ReactDOM.render(
-    <div>asdf</div>,
+    <Header />,
     document.getElementById('root')
 )
 
