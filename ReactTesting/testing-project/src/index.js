@@ -7,24 +7,44 @@ import lowerCaseAndSort from './utilities/string-utils';
 
 const data = ['Germany', 'Albania', 'United States'];
 
-lowerCaseAndSort(data);
+const modifiedData = lowerCaseAndSort(data);
+console.log(modifiedData);
 
-function Header() {
+function Header(props) {
     return (
         <header>
-            <nav>
-                <ul>
-                    <li>
-                        <a href="/">Home</a>
-                    </li>
-                </ul>
-            </nav>
+            <Nav className="header-navigation" />
         </header>
     );
 }
 
+function Nav(props) {
+    return (
+        <nav>
+            <ul>
+                <li>
+                    <a href="/">Home</a>
+                </li>
+            </ul>
+        </nav>
+    );
+}
+
+function Footer(props) {
+    const footerClass = 'footer';
+    const footerNavClass = `${footerClass}-navigation`;
+
+    return (
+        <footer>
+            <Nav className={footerNavClass} />
+        </footer>
+    )
+}
+
+
+
 ReactDOM.render(
-    <div></div>,
+    <div>asdf</div>,
     document.getElementById('root')
 )
 

@@ -10,7 +10,7 @@ function lowerCaseAndSort(arrData) {
             }
             return 0;
         });
-    console.log(sorted)
+   return sorted;
 }
 
 export default lowerCaseAndSort;
