@@ -1,54 +1,40 @@
-import React, {Fragment} from 'react';
+import React, { Fragment } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import lowerCaseAndSort from './utilities/string-utils';
 
-const data = ['Germany', 'Albania', 'United States'];
+const data = [
+    {
+        bookId: 1,
+        title: 'Lord of the Rings',
+        author = 'Pesho'
+    },
+    {
+        bookId: 2,
+        title: 'Kotkata',
+        author: 'Todor'
+    }
+]
 
-const modifiedData = lowerCaseAndSort(data);
-console.log(modifiedData);
-
-function Header(props) {
-
-    const headerClass = 'header';
-    const headerNavClass = `${headerClass}-navigation`;
+function BookList(props) {
+    const { books } = props;
     return (
-        <header>
-            <Nav className={headerNavClass} />
-        </header>
-    );
-}
-
-function Nav(props) {
-    const {className} = props;
-    return (
-        <nav className={className}>
-            <ul>
+        <ul>
+            {books.map(book => (
                 <li>
-                    <a href="/">Home</a>
+                    <h5>{book.title}</h5>
+                    <h6>{book.author}</h6>
                 </li>
-            </ul>
-        </nav>
+            ))}
+        </ul>
     );
 }
-
-function Footer(props) {
-    const footerClass = 'footer';
-    const footerNavClass = `${footerClass}-navigation`;
-
-    return (
-        <footer>
-            <Nav className={footerNavClass} />
-        </footer>
-    )
-}
-
 
 
 ReactDOM.render(
-    <Header />,
+    <BookList books={books} />,
     document.getElementById('root')
 )
 
