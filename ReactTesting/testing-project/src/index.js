@@ -11,9 +11,12 @@ const modifiedData = lowerCaseAndSort(data);
 console.log(modifiedData);
 
 function Header(props) {
+
+    const headerClass = 'header';
+    const headerNavClass = `${headerClass}-navigation`;
     return (
         <header>
-            <Nav className="header-navigation" />
+            <Nav className={headerNavClass} />
         </header>
     );
 }
