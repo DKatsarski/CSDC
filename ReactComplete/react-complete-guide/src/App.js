@@ -28,9 +28,9 @@ class App extends Component {
   nameChangedHandler = (event) => {
     this.setState({
       persons: [
-        { name: "asd", age: 28 },
-        { name: event.target.value, age: 32 },
-        { name: 'AAAA', age: 52 }
+        { id: 'dfa', name: "asd", age: 28 },
+        { id: 'sdffd', name: event.target.value, age: 32 },
+        { id: '23rf', name: 'AAAA', age: 52 }
       ]
     })
   }
@@ -45,7 +45,8 @@ class App extends Component {
             return <Person
               click={() => this.deletePersonHandler(index)}
               name={person.name}
-              age={person.age} />
+              age={person.age}
+              key={person.id} />
           })}
       
         </div>
