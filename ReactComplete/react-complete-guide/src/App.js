@@ -51,7 +51,7 @@ class App extends Component {
       color: 'white',
       font: 'inherit',
       border: '1px solid blue',
-      padding: '8px', 
+      padding: '8px',
       cursor: 'pointer'
     };
 
@@ -74,13 +74,15 @@ class App extends Component {
       style.backgroundColor = 'red';
     }
 
+    let classes = ['red', 'bold'].join(' ');
+
     return (
       <div className="App">
         <h1>hm...  its here</h1>
-        <p>does this work</p>
-        <button 
-        style={style}
-        onClick={this.togglePersonsHandler}>Switch name</button>
+        <p className={classes}>does this work</p>
+        <button
+          style={style}
+          onClick={this.togglePersonsHandler}>Switch name</button>
 
         {persons}
 
