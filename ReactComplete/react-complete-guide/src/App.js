@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import Radium from 'radium';
+import Radium, { StyleRoot } from 'radium';
 import Person from './Person/Person';
 
 
@@ -54,7 +54,7 @@ class App extends Component {
       border: '1px solid blue',
       padding: '8px',
       cursor: 'pointer',
-      ':hover' : {
+      ':hover': {
         backgroundColor: 'lightgreen',
         color: 'black'
       }
@@ -92,9 +92,10 @@ class App extends Component {
       classes.push('bold');
     }
 
-    
+
 
     return (
+      <StyleRoot>
       <div className="App">
         <h1>hm...  its here</h1>
         <p className={classes.join(' ')}>does this work</p>
@@ -105,7 +106,9 @@ class App extends Component {
         {persons}
 
       </div>
+      </StyleRoot>
     );
+   
   }
 }
 
