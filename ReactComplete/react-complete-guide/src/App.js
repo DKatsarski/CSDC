@@ -4,13 +4,24 @@ import Person from './Person/Person';
 
 
 class App extends Component {
+  state = {
+    animals: [
+      { name: 'Max', age: 28},
+      { name: 'ivan', age: 32},
+      { name: 'Stephi', age: 52},
+    ]
+  }
+
   render() {
     return (
       <div className="App">
         <h1>hm... maybeeee its here</h1>
         <p>does this work</p>
-        <label>mmm</label>
-        <Person />
+        <button>Switch name</button>
+        <Person name={this.state.animals[0].name} age={this.state.animals[0].age}/>
+        <Person name={this.state.animals[1].name} age={this.state.animals[1].age}>SDFSDFSDF</Person>
+        <Person name={this.state.animals[2].name} age={this.state.animals[2].age}/>
+
       </div>
     );
   }
