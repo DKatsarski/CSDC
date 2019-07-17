@@ -5,7 +5,7 @@ import Person from './Person/Person';
 
 class App extends Component {
   state = {
-    animals: [
+    persons: [
       { name: 'Max', age: 28 },
       { name: 'ivan', age: 32 },
       { name: 'Stephi', age: 52 },
@@ -14,25 +14,20 @@ class App extends Component {
     showPersons: false
   }
 
-  switchNameHandler = (newName) => {
-    // console.log('asdf');
-    this.setState({
-      animals: [
-        { name: newName, age: 28 },
-        { name: 'ivan', age: 32 },
-        { name: 'AAAA', age: 52 }
-      ]
-    })
+  deletePersonHandler = (personIndex) => {
+    const persons = [...this.state.persons];
+    persons.splice(personIndex, 1);
+    this.setState({ persons: persons })
   }
 
   togglePersonsHandler = () => {
     const doesShow = this.state.showPersons;
-    this.setState({showPersons: !doesShow});
+    this.setState({ showPersons: !doesShow });
   }
 
   nameChangedHandler = (event) => {
     this.setState({
-      animals: [
+      persons: [
         { name: "asd", age: 28 },
         { name: event.target.value, age: 32 },
         { name: 'AAAA', age: 52 }
@@ -41,33 +36,29 @@ class App extends Component {
   }
 
   render() {
-let persons = null;
+    let persons = null;
 
-if  (this.state.showPersons) {
-  persons = (
-    <div>
-    <Person
-      name={this.state.animals[0].name}
-      age={this.state.animals[0].age} />
-    <Person
-      name={this.state.animals[1].name}
-      age={this.state.animals[1].age}
-      click={this.switchNameHandler}
-      changed={this.nameChangedHandler}>SDFSDFSDF</Person>
-    <Person
-      name={this.state.animals[2].name}
-      age={this.state.animals[2].age} />
-  </div> 
-  );
-}
+    if (this.state.showPersons) {
+      persons = (
+        <div>
+          {this.state.persons.map((person, index) => {
+            return <Person
+              click={() => this.deletePersonHandler(index)}
+              name={person.name}
+              age={person.age} />
+          })}
+      
+        </div>
+      );
+    }
 
     return (
       <div className="App">
         <h1>hm...  its here</h1>
         <p>does this work</p>
         <button onClick={this.togglePersonsHandler}>Switch name</button>
-        
-       {persons}
+
+        {persons}
 
       </div>
     );
