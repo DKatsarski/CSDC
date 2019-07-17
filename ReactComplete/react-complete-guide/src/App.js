@@ -12,12 +12,16 @@ class App extends Component {
     ]
   }
 
+  switchNameHandler = () => {
+    console.log('asdf');
+  }
+
   render() {
     return (
       <div className="App">
         <h1>hm... maybeeee its here</h1>
         <p>does this work</p>
-        <button>Switch name</button>
+        <button onClick={this.switchNameHandler}>Switch name</button>
         <Person name={this.state.animals[0].name} age={this.state.animals[0].age}/>
         <Person name={this.state.animals[1].name} age={this.state.animals[1].age}>SDFSDFSDF</Person>
         <Person name={this.state.animals[2].name} age={this.state.animals[2].age}/>
