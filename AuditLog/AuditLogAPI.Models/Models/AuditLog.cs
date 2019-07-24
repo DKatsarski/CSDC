@@ -10,8 +10,6 @@ namespace AuditLogAPI.Models
 
         public string EntityType { get; set; }
 
-        public string Environment { get; set; }
-
         public DateTime? StartDate { get; set; }
 
         public DateTime? EndDate { get; set; }
@@ -19,7 +17,5 @@ namespace AuditLogAPI.Models
         public int Duration { get; set; }
 
         public DateTime? AuditDate { get; set; }
-
-        public string TablePk { get; set; }
     }
 }

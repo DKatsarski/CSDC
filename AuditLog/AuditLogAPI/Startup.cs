@@ -43,11 +43,9 @@ namespace AuditLogAPI
                     .AuditEntityAction<AuditLog>((ev, entry, entity) =>
                     {
                         entity.EntityType = ev.EventType.ToString();
-                        entity.Environment = ev.Environment.ToJson();
                         entity.StartDate = ev.StartDate;
                         entity.EndDate = ev.EndDate;
                         entity.Duration = ev.Duration;
-                        entity.TablePk = Environment.UserName;
                         entity.AuditData = entry.ToJson();
                     })
                     .IgnoreMatchedProperties(true));
