@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Radium, { StyleRoot } from 'radium';
-import Person from './Person/Person';
-import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
+import Person from '../components/Person/Person';
 
 
 class App extends Component {
