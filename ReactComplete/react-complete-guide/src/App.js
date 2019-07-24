@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import Radium, { StyleRoot } from 'radium';
 import Person from './Person/Person';
+import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
 
 
 class App extends Component {
@@ -66,12 +67,13 @@ class App extends Component {
       persons = (
         <div>
           {this.state.persons.map((person, index) => {
-            return <Person
-              click={() => this.deletePersonHandler(index)}
-              name={person.name}
-              age={person.age}
-              key={person.id}
-              changed={(event) => this.nameChangedHandler(event, person.id)} />
+            return <ErrorBoundary key={person.id}>
+              <Person
+                click={() => this.deletePersonHandler(index)}
+                name={person.name}
+                age={person.age}
+                changed={(event) => this.nameChangedHandler(event, person.id)} />
+            </ErrorBoundary>
           })}
 
         </div>
@@ -96,19 +98,19 @@ class App extends Component {
 
     return (
       <StyleRoot>
-      <div className="App">
-        <h1>hm...  its here</h1>
-        <p className={classes.join(' ')}>does this work</p>
-        <button
-          style={style}
-          onClick={this.togglePersonsHandler}>Switch name</button>
+        <div className="App">
+          <h1>hm...  its here</h1>
+          <p className={classes.join(' ')}>does this work</p>
+          <button
+            style={style}
+            onClick={this.togglePersonsHandler}>Switch name</button>
 
-        {persons}
+          {persons}
 
-      </div>
+        </div>
       </StyleRoot>
     );
-   
+
   }
 }
 
