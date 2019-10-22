@@ -12,14 +12,14 @@ class App extends Component {
     ]
   }
 
-  swtichNameHandler = () => {
+  swtichNameHandler = (newName) => {
     //  console.log('was clicked');
     // this.state.persons[0].name = 'PETTREEEE'
 
     this.setState({
       persons:
         [
-          { name: 'PETKOOOOOO', age: 29 },
+          { name: newName, age: 29 },
           { name: 'Peto', age: 45 },
           { name: 'Branko', age: 229 }
         ]
@@ -31,10 +31,18 @@ class App extends Component {
       <div className="App">
         <h1>first react sentance</h1>
         <p>asdfasdfasdfasdf</p>
-        <button onClick={this.swtichNameHandler}>Switch Name</button>
-        <Person name={this.state.persons[0].name} age={this.state.persons[0].age} />
-        <Person name={this.state.persons[1].name} age={this.state.persons[1].age}>Favorite Movies: Joker</Person>
-        <Person name={this.state.persons[2].name} age={this.state.persons[2].age} />
+        <button onClick={this.swtichNameHandler.bind(this, 'DFSDFSDF')}>Switch Name</button>
+        <Person
+          name={this.state.persons[0].name}
+          age={this.state.persons[0].age} />
+        <Person
+          name={this.state.persons[1].name}
+          age={this.state.persons[1].age}
+          click={this.swtichNameHandler.bind(this, '11111111111111')}>Favorite Movies: Joker</Person>
+
+        <Person
+          name={this.state.persons[2].name}
+          age={this.state.persons[2].age} />
       </div>
     );
   }
