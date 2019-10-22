@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import Person from './Person/Person';
+import person from './Person/Person';
 
 class App extends Component {
 
@@ -57,7 +58,28 @@ class App extends Component {
 
     };
 
+    let persons = null;
 
+    if (this.state.showPersons) {
+      persons = (
+        <div>
+        <Person
+          name={this.state.persons[0].name}
+          age={this.state.persons[0].age} />
+        <Person
+          name={this.state.persons[1].name}
+          age={this.state.persons[1].age}
+          click={this.swtichNameHandler.bind(this, '11111111111111')}
+          changed={this.nameChangedHandler} >Favorite Movies: Joker</Person>
+
+        <Person
+          name={this.state.persons[2].name}
+          age={this.state.persons[2].age} />
+      </div> 
+    
+      );
+
+    }
 
     return (
       <div className="App">
@@ -67,23 +89,10 @@ class App extends Component {
           style={style}
           onClick={this.togglePersonsHandler}>Switch Name
           </button>
-        {
-          this.state.showPersons ? 
-        <div>
-          <Person
-            name={this.state.persons[0].name}
-            age={this.state.persons[0].age} />
-          <Person
-            name={this.state.persons[1].name}
-            age={this.state.persons[1].age}
-            click={this.swtichNameHandler.bind(this, '11111111111111')}
-            changed={this.nameChangedHandler} >Favorite Movies: Joker</Person>
-
-          <Person
-            name={this.state.persons[2].name}
-            age={this.state.persons[2].age} />
-        </div> : null
-      }
+          {persons}
+        
+       
+    
 
       </div>
     );
