@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
+import Radium from 'radium'
 import Person from './Person/Person';
-import person from './Person/Person';
 
 class App extends Component {
 
@@ -48,7 +48,8 @@ class App extends Component {
 
     const style = {
 
-      backgroundColor: 'white',
+      backgroundColor: 'green',
+      color: 'white',
       font: 'inherit',
       border: '1px solid blue',
       padding: '8px',
@@ -75,24 +76,35 @@ class App extends Component {
 
       );
 
+          style.backgroundColor = 'red';
+
+
+    } 
+
+    let classes = [];
+
+    if (this.state.persons.length <= 2) {
+      classes.push('red');
     }
+
+    if (this.state.persons.length <= 1) {
+      classes.push('bold');
+    }
+
 
     return (
       <div className="App">
         <h1>first react sentance</h1>
-        <p>asdfasdfasdfasdf</p>
+        <p className={classes.join(' ')}>asdfasdfasdfasdf</p>
         <button
           style={style}
           onClick={this.togglePersonsHandler}>Switch Name
           </button>
         {persons}
 
-
-
-
       </div>
     );
   }
 }
 
-export default App;
+export default Radium(App);
