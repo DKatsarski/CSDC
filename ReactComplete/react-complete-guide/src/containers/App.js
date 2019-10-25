@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import './App.css';
 import Radium from 'radium'
-import Person from '../components/Persons/Person/Person';
+import Persons from '../components/Persons/Persons';
 
 class App extends Component {
 
   state = {
     persons: [
-      {id: '12312', name: 'Johnny', age: 29 },
-      {id: '423', name: 'Peto', age: 45 },
-      {id: '2', name: 'Branko', age: 29 }
+      { id: '12312', name: 'Johnny', age: 29 },
+      { id: '423', name: 'Peto', age: 45 },
+      { id: '2', name: 'Branko', age: 29 }
     ],
     otherState: 'this is the other state',
     showPersons: false
@@ -17,7 +17,7 @@ class App extends Component {
 
   deletePersonHandler = (personIndex) => {
     const persons = [...this.state.persons]
-    persons.splice(personIndex, 1); 
+    persons.splice(personIndex, 1);
     this.setState({ persons: persons });
   }
 
@@ -26,7 +26,7 @@ class App extends Component {
       return p.id === id;
     });
 
-    const person = { 
+    const person = {
       ...this.state.persons[personIndex]
     };
 
@@ -58,7 +58,7 @@ class App extends Component {
         backgroundColor: 'lightgreen',
         color: 'black'
       }
-  
+
     };
 
     let persons = null;
@@ -66,26 +66,20 @@ class App extends Component {
     if (this.state.showPersons) {
       persons = (
         <div>
-          {this.state.persons.map((person, index) => {
-            return <Person
-              click={() => this.deletePersonHandler(index)}
-              name={person.name}
-              age={person.age}
-              key={person.id}
-              changed={(event) => this.nameChangedHandler(event, person.id)} />
-          })}
-
+          <Persons
+            persons={this.state.persons}
+            clicked={this.deletePersonHandler}
+            changed={this.nameChangedHandler} />
 
         </div>
 
       );
-
-          style.backgroundColor = 'red';
-          style[':hover'] = {
-            backgroundColor: 'salmon',
-            color: 'black'
-          }
-    } 
+      style.backgroundColor = 'red';
+      style[':hover'] = {
+        backgroundColor: 'salmon',
+        color: 'black'
+      }
+    }
 
     let classes = [];
 
