@@ -52,7 +52,7 @@ class BurgerBuilder extends Component {
         this.setState({ totalPrice: newPrice, ingredients: updatedIngredients })
     }
     render() {
-        const disabledInfo ={
+        const disabledInfo = {
             ...this.state.ingredients
         };
 
@@ -65,8 +65,9 @@ class BurgerBuilder extends Component {
                 <Burger ingredients={this.state.ingredients} />
                 <BuildControlls
                     ingredientAdded={this.addIngredientHandler}
-                    ingredientRemove={this.removeIngredientHandler} 
-                    disabled={disabledInfo}/>
+                    ingredientRemove={this.removeIngredientHandler}
+                    disabled={disabledInfo}
+                    price={this.state.totalPrice} />
             </Auxilliary>
         );
     }
