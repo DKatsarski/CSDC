@@ -107,13 +107,24 @@ class BurgerBuilder extends Component {
         //         deliveryMethod: 'fasteset'
         //     }
         // }
-        // axios.post('/orders.json', order)
+        // axios.post('/orders.json', order)0
         //     .then(response => {
         //         this.setState({ loading: false, purchasing: false });
         //     })
         //     .catch(error => {
         //         this.setState({ loading: false, purchasing: false });
         //     });
+        const queryParams = [];
+
+        for (let i in this.state.ingredients) {
+            queryParams.push(encodeURIComponent(i) + '=' + encodeURIComponent(this.state.ingredients[i]))
+        }
+
+        const queryString = queryParams.join('&');
+        this.props.history.push({
+            pathname: '/checkout',
+            search: '?' + queryString
+        });
     }
 
     render() {
