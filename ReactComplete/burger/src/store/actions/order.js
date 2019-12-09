@@ -21,7 +21,7 @@ export const purchaseBurgerStart = () => {
         type: actionTypes.PURCHASE_BURGER_START
     };
 };
-
+debugger;
 export const purchaseBurger = ( orderData, token ) => {
     return dispatch => {
         dispatch( purchaseBurgerStart() );
